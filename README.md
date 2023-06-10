@@ -66,31 +66,23 @@ Should get a dub window that looks like the following picture:
 
 Using the avisynth script can get a bit tricky because there are so many plugins out there and you will usually
 run into a plugin missing error. That is why the scripts zip file here contains most of the DLLs needed.  
-Download the zip file and unzip it somewhere in your work directory.  
+Download the scripts zip file and unzip it somewhere in your work directory.  
 
-Go to the scripts directory and open up remove_dups.avs in any text editor like Notepad or any other text editor.. Change the clip source path to wherever the clip is stored. #=============================================================================================
+Go to the scripts directory and open up remove_dups.avs in any text editor like Notepad or any other text editor.  
+Change the source path in the script to point to your vdeo. 
+Example:  
+film = "F:\canon\clip1_raw.avi"  
 
-Clip source.
-#=============================================================================================
+Once done with the script, just drag the script file into the VirtualDub window.  
+After a minute or so the video first frame will be displayed.  
+At that point, set the video compression in the video pulldown and save the video.  
+No further processing will be required. 
+In unlikely case that there are black frames in the resulting video, run the remove_black_frames.avs script included here
 
-film = "F:\canon\clip1_raw.avi" # source clip, you must specify the full path here
-
-Change the threshold:
-source= AviSource(film).assumefps(play_speed).trim(trim_begin,0).converttoYV12()
-trimming= framecount(source)-trim_end
-source1= trim(source,0,trimming)
-source2= AssumeTFF(source1)
-fc=Framecount(source2)
-source3 = GetDups(source2,mode=-2,threshold=30.0)
-source4 = Trim(source3,0,fc/3).coloryuv(autowhite=true)
-#Eval(film)
-
-Here it is set to 30. Lower threshold will have less chance of saving the bad frames but if it is too low it may remove some good frames.
-It is a good idea to check the frame count uo front by running teh projector at low speed and counting the frames for a minute or two to
-determine the frame rate and then run the complete reel and multiply the rate with duration. Alternatively a rough frame count can be obtained from the size of the reel.
-
-Once done with the script, just drag the script file into the VirtualDub window. After a minute or so the video first frame will be displayed.
-At that point, set the video compression in the video pulldown and save the video. No further processing will be required, although soemtimes you may get a few blank frames. If that happens run the remove_black_frames.avs script included here
-
-Issue with avisynth dlls:  
+If the script reports issues with loading certain plugins the most likely reason is that the your window installation 
+is missing some DLLs. 
+Run avsmeter.exe. in command window. It is in the scripts directory.
+You can also try dependency walker.
+https://www.dependencywalker.com/#:~:text=Dependency%20Walker%20is%20a%20free,diagram%20of%20all%20dependent%20modules.  
+Some emore details here:  
 https://forum.doom9.org/showthread.php?t=172793
