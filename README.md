@@ -25,27 +25,46 @@ The unit should start advancing the film.
 Once the lead is done and the good film section start running through the gate, turn the run switch off.  
 The motor will stop but the light will be still on.
 Plug the camera usb cable into the camera usb connector.
-Download Amcap app from this repository.
-Note that there are two versions of capture software here at this site.  
-amcap 
-H264  
-H264 is just another rversiion of amcap. Some testing is required to see which version runs better. 
-Here are instructions on how to setuo amcap:  
+Download 3-H.264 USB Camera Testing software for Windows-20230606T131020Z-001.zip file to your local directory.
+Unzip it and go into it. 
+Then double click on H264_Preview.exe  
+A window will open uo and dshould look like as shown:
+![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/674afcc9-88a0-41b1-b484-f3c62a66705c)  
+Select the camera
+![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/952fda6c-07f7-4e3f-ae13-06673e56699b)  
+Enable preview:
+![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/9e3792fa-4f28-45f2-9d5f-e48f9ba5cf48)  
+The frame preview shouldd be displayed. This one should here is  for the 6mm lens. The 12mm will have larger frame and
+proper orientation.
+If you get the white screen only then the camera may need a reset. Just unplug the camera from the PC and   
+plug it back in.  
+![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/0eb5f07b-6494-4933-baf3-db8127d419ab)  
+
+Note: Make sure that there is no external light shining on the gate like a daylight frorm the eindow etc. 
+Additional camera controls are available via   options pulldown:
+![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/a80bc6a0-8deb-4ed7-ae05-cbf88292b43b) 
+![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/0026c09f-cd08-4a86-88d3-8b0e64a03b30)
+and camera controls
+![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/1954d44c-acd5-4b7b-9898-d391f2e12684)  
+These can be let as is. Under some conditions manual exposure and manual white balance may work better.  
+The best way is to experiment with the settings  to achiveve best results. 
+Some additional info:  
 https://docs.arducam.com/UVC-Camera/Quick-Start-for-Different-Systems/Windows/  
-Once the video is captured, it will have duplicate frames and transitions in it.  
+
+Once all of this is set, run capture.  
+![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/532e3005-2209-4884-9a9a-d0ce9e1cad0a)  
+Set the destination file path. Make sure eto type the .avi after the file name.  
+![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/fd581b8e-145f-454d-8941-1a31b9da45b2)  
+Click OK. Do not have to change the file allocation size.  
+![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/3a54eae9-b6fe-4cc7-83c1-3449642b831d)  
+Press the power button to turn the unit off. Then turn the RUN switch on  and press the power button again.
+The unit will run and the film capture will start.   
+
+
+Once the video is done, turn the RUN switch off and power the unit off.  
+The video will have duplicate frames and transitions in it.  
 The duplicates are transitions get cleaned up by the avisynth script.
 Here are instructions on how to run the script.
-
-
-
-
-
-
-
-
-
-
-
 
 ## Postprocessing  
 The video will contain many duplicate frames and transitions.  
