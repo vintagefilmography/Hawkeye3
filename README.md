@@ -25,6 +25,21 @@ The unit should start advancing the film.
 Once the lead is done and the good film section start running through the gate, turn the run switch off.  
 The motor will stop but the light will be still on.
 Plug the camera usb cable into the camera usb connector.
+Download Amcap app from this repository.
+Note that there are two versions of capture software here at this site.  
+amcap 
+H264  
+H264 is just another rversiion of amcap. Some testing is required to see which version runs better. 
+Here are instructions on how to setuo amcap:  
+https://docs.arducam.com/UVC-Camera/Quick-Start-for-Different-Systems/Windows/  
+Once the video is captured, it will have duplicate frames and transitions in it.  
+The duplicates are transitions get cleaned up by the avisynth script.
+Here are instructions on how to run the script.
+
+
+
+
+
 
 
 
