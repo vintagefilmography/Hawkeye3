@@ -100,8 +100,48 @@ Once this is completed the resulting video can be brought back into VirtualDub
 or DaVinci Resolve to do the final cut.
 If the script reports issues with loading certain plugins, the most likely reason is that the your window installation 
 is missing some DLLs. 
-Run avsmeter.exe. in command window. It is in the scripts directory.
-You can also try dependency walker.
+Run avsmeter.exe. in command window. It is in the scripts directory. 
+avsmeter remove_dups.avs  
+avsmeter provides the report and may give you additional info why the script is not loading properly.  
+Here  is an example of the report:
+AVSMeter 2.9.9.1 (x86), 2012-2020, (c) Groucho2004  
+AviSynth 2.60, build:Feb 20 2015 [03:16:45] (2.6.0.5)  
+  
+Number of frames:                     2170  
+Length (hh:mm:ss.ms):         00:02:00.556  
+Frame width:                          1920  
+Frame height:                         1080  
+Framerate:                          18.000 (18/1)  
+Colorspace:                           YV12  
+Active MT Mode:                          0  
+  
+Frame (current | last):             292 | 2169  
+FPS (cur | min | max | avg):        10.48 | 0.206 | 16.92 | 7.286  
+Process memory usage:               617 MiB  
+Thread count:                       4  
+CPU usage (current | average):      24.7% | 24.5%  
+  
+Time (elapsed | estimated):         00:00:40.076 | 00:04:57.825  
+
+In some cases avsmeter may not be able to help you and it may not give additional info on why a perticular DLL in  
+not loading.  
+You can also try dependency walker then.
 https://www.dependencywalker.com/#:~:text=Dependency%20Walker%20is%20a%20free,diagram%20of%20all%20dependent%20modules.  
-Some emore details here:  
+Download the zip into a local folder and unzip it there.  
+Run dependds.exe by double clicking on it.  
+A window will open.  
+![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/5d0250d9-9b23-49b1-ba27-8fc986cedb36)  
+Do File->Open and open the DLL that has issues loading.
+You will get a bunch of errors. Most of these are no problem beecause the tool is old and dodes not  
+recognize the new calls. Go don to the bottom of the error list and you will notice different types of errors.
+For example:  
+HVSIFILETRUST.DLL  
+IESHIMS.DLL  
+PDMUTILITIES.DLL  
+You can search for DLL description and dwhere used but most likely these are used by  
+Microsoft redistrbutable package that is not loaded on your system.  
+https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170
+Install the 2015-2022 version and see if this fixes your issue. Most likely it will.
+
+Some more details here:  
 https://forum.doom9.org/showthread.php?t=172793
