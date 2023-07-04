@@ -188,3 +188,38 @@ Install the 2015-2022 version and see if this fixes your issue. Most likely it w
 
 Some more details here:  
 https://forum.doom9.org/showthread.php?t=172793
+
+## Further Postprocessing  
+Use option4.avs script in the scripts directory if additional film cleaning is required.  
+Here is the desription of whata the script does.   
+You start at thee bottom of the script  
+Eval(result)#.converttoRGB24()  
+
+Then search for result:  
+result="result4" # specify the wanted output here  
+
+Then search for result4  
+ result4= interpolated.coloryuv(off_U=blue,off_V=red).levels(black_level,1.0,white_level,0,255)\  
+
+Then for interpolated -- not these are all video streams in a pipeline feeding each other  
+interpolated= denoised.MFlowFps(super, backward_vec, forward_vec, num=numerator, den= denumerator, ml=100)\  
+
+Then denoised
+denoised= cleaned.MVDegrainMulti(vectors, thSAD=denoising_strenght, SadMode=1, idx=2).unsharpmask(USM_sharp_ness3,USM_radi_us3,0)  
+
+cleaned= RemoveDirtMC(noise_baseclip,dirt_strenght).unsharpmask(USM_sharp_ness1,USM_radi_us1,0)\  
+.unsharpmask(USM_sharp_ness2,USM_radi_us2,0).Lanczos4Resize(W,H)  
+
+noise_baseclip= stab2.levels(0,gamma,255,0,255).tweak(sat=saturation)  
+stab2= stab.crop(CLeft,CTop,-CRight,-CBottom)  
+
+stab=DePanStabilize(source1,data=mdata,cutoff=cutoff_value,dxmax=maxstabH,dymax=maxstabV,method=0,mirror=15).deflicker()  
+
+source1= trim(source,0,trimming)  
+
+source= AviSource(film).assumefps(play_speed).trim(trim_begin,0).converttoYV12()  
+
+film= "F:\Hawkeye2\clip1-raw.avi"  
+
+Note that the sections of the pipeline can be bypassed and new filters inserted if needed.  
+It is fully customizable. 
