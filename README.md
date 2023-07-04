@@ -25,31 +25,75 @@ The unit should start advancing the film.
 Once the lead is done and the good film section start running through the gate, turn the run switch off.  
 The motor will stop but the light will be still on.
 Plug the camera usb cable into the camera usb connector.
-Download 3-H.264 USB Camera Testing software for Windows-20230606T131020Z-001.zip file to your local directory.
-Unzip it and go into it. 
+
+## Capture Software
+Download CapSample1.exe to your local drive.  
+Extract it.  
+Go to:  
+..\CapSample1\CapSample\bin  directory and run CapSample.exe  
+Select camera  
+![image](https://github.com/vintagefilmography/WolverineFix/assets/48537944/739e5040-5c82-4d1b-a6f2-12ea4512b99c)  
+ 
+The config window should pop up  
+![image](https://github.com/vintagefilmography/WolverineFix/assets/48537944/7d7a6b80-792d-4e58-8e67-b126cd560a5c)  
+ 
+Select 15 FPS  
+Click OK. 
+The preview window should display the camera preview.  
+![image](https://github.com/vintagefilmography/WolverineFix/assets/48537944/08fb6415-1df7-408d-b7a1-99aa4c23c814)  
+ 
+Click on video capture device in the config window. 
+The camera info window should pop up.  
+![image](https://github.com/vintagefilmography/WolverineFix/assets/48537944/30fa9b15-1f12-44cc-9d48-7383b5f61a58)  
+ 
+Click on Camera Control tab and set the exposure to manual and set the exposure control as needed.  
+The auto exposure works ok sometimes but it can be fooled by the image white areas such as sprocket holes. 
+Now, you are basically ready to start the capture. The default output directory in the config window is set to C:/Capture. 
+You can leave it like that or change it to some other destination. 
+It may be better to save the video to your local C: drive to ensure that there are no dropped frames.  
+Once the capture is done it is easy just to copy the video from c: drive to an external drive and postprocess it right there.  
+Press the start button:  
+![image](https://github.com/vintagefilmography/WolverineFix/assets/48537944/ee5da0ec-926e-46f0-8f33-bc2f0a620e7e)  
+ 
+Turn the unit of by pressing the power button in the original controller.  
+Then, turn the run switch on and press the power button again.  
+The unit should start running and the output will be sent to the C:\Capture directory or whatever directory you selected.  
+Note that you can adjust the exposure dynamically while the capture is running. It is also possible to adjust other camera parameters if required.  
+Once done, hit the Stop button in the preview window.  
+
+## Alternative Capture Software
+Download "3-H.264 USB Camera Testing software for Windows-20230606T131020Z-001.zip" file to your local directory.  
+Unzip it and go into it.  
 Then double click on H264_Preview.exe  
-A window will open uo and dshould look like as shown:
-![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/674afcc9-88a0-41b1-b484-f3c62a66705c)  
-Select the camera
+A window will open uo and should look like as shown:  
+![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/674afcc9-88a0-41b1-b484-f3c62a66705c)   
+Select the camera  
 ![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/952fda6c-07f7-4e3f-ae13-06673e56699b)  
-Enable preview:
-![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/9e3792fa-4f28-45f2-9d5f-e48f9ba5cf48)  
-The frame preview shouldd be displayed. This one should here is  for the 6mm lens. The 12mm will have larger frame and
-proper orientation.
+Enable preview:  
+![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/9e3792fa-4f28-45f2-9d5f-e48f9ba5cf48)    
+The frame preview should be displayed.  
 If you get the white screen only then the camera may need a reset. Just unplug the camera from the PC and   
 plug it back in.  
 ![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/0eb5f07b-6494-4933-baf3-db8127d419ab)  
 
 Note: Make sure that there is no external light shining on the gate like a daylight frorm the eindow etc. 
-Additional camera controls are available via   options pulldown:
+Additional camera controls are available via   options pulldown:  
 ![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/a80bc6a0-8deb-4ed7-ae05-cbf88292b43b) 
-![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/0026c09f-cd08-4a86-88d3-8b0e64a03b30)
-and camera controls
+![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/0026c09f-cd08-4a86-88d3-8b0e64a03b30)  
+and camera controls   
 ![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/1954d44c-acd5-4b7b-9898-d391f2e12684)  
 These can be let as is. Under some conditions manual exposure and manual white balance may work better.  
 The best way is to experiment with the settings  to achiveve best results. 
-Some additional info:  
-https://docs.arducam.com/UVC-Camera/Quick-Start-for-Different-Systems/Windows/  
+If you get some green frames at the beginning of the captured video with H264_preview.exe  do the following:  
+Change the GOP in the H264 control pulldown to something lower than 29.  
+![image](https://github.com/vintagefilmography/WolverineFix/assets/48537944/c75342b8-c7d0-45a0-9dd2-5f54c27ed86c)  
+
+The GOP is a compression scheme where you group a set of images and use the first one as the key image.  
+In the subsequent images you just send the diff info.  
+But if the group is too long and you have dropped images the stream can go out of sequence and cannot decode the images completely.  
+In the same popup window you can adjust the bit rate. Around 4000 kbps is still good quality. 
+Check the dropped frames info on the bottom while capturing. A few here and there are ok but you do not want this  
+get large. If it is then lower the FPS or bit rate or increase the GOP.  
 
 Once all of this is set, run capture.  
 ![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/532e3005-2209-4884-9a9a-d0ce9e1cad0a)  
@@ -57,15 +101,14 @@ Set the destination file path. Make sure eto type the .avi after the file name.
 ![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/fd581b8e-145f-454d-8941-1a31b9da45b2)  
 Click OK. Do not have to change the file allocation size.  
 ![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/3a54eae9-b6fe-4cc7-83c1-3449642b831d)  
-Press the power button to turn the unit off. Then turn the RUN switch on  and press the power button again.
+Press the power button to turn the unit off. Then turn the RUN switch on  and press the power button again.  
 The unit will run and the film capture will start.   
 
 
 Once the video is done, turn the RUN switch off and power the unit off.  
 The video will have duplicate frames and transitions in it.  
-The duplicates are transitions get cleaned up by the avisynth script.
-Here are instructions on how to run the script.
-
+The duplicates are transitions get cleaned up by the avisynth script.  
+Here are instructions on how to run the script.  
 ## Postprocessing  
 The video will contain many duplicate frames and transitions.  
 It is easy to remove the duplicates and the transition frames by using the Avisynth remove_dups script.  
