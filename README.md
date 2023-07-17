@@ -125,24 +125,32 @@ https://sourceforge.net/projects/vdfiltermod/files/
 Run VirtualDub.
 Should get a dub window that looks like the following picture:  
 ![image](https://github.com/vintagefilmography/Hawkeye3/assets/48537944/abe5bc97-fe19-4714-ac30-c9fc77c092d3)  
-The video file obtained by the capture sw uses the H264 codec and cannot be processed directly by the dups  
-script. To get around this issue drag the video into virtual dub and save it using lagarith codec or raw.  
-Raw obviously will take up more space. Now this saved file will be compatible with the dups script.  
 
-Go to the scripts directory and open up remove_dups.avs in any text editor like Notepad or any other text editor.  
+Go to the scripts directory and open up remove_dups_elp.avs in any text editor like Notepad or any other text editor.  
 Change the source path in the script to point to your vdeo. 
 Example:  
 film = "F:\canon\clip1_raw.avi"  
 
 Once done with the script, just drag the script file into the VirtualDub window.  
 After a minute or so the video first frame will be displayed.  
+
+If you get the compressor error then you will have to dod an intemmediate step before  
+running the remove_dups_elp.avs.  
+Drag the original video into VirtualDub2  
+Save it as Raw or select one of the compressors.
+Then use the remove_dups.avs and (not remove_dups_elp.avs) and dmodify the path to  
+point to the new saved file.  
+Drag the reove_dups.avs into VirtualDub2. It should  work ok now.  
+  
 At that point, set the video compression in the video pulldown and save the video.  
-In unlikely case that there are black frames in the resulting video,   
-run the remove_black_frames.avs script included here.  
 Once this is completed the resulting video can be brought back into VirtualDub  
 or DaVinci Resolve to do the final cut.
 If the script reports issues with loading certain plugins, the most likely reason is that the your window installation 
 is missing some DLLs. 
+Try installing Microsoft redistrbutable package.  
+https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170
+Install the 2015-2022 version and see if this fixes your issue. Most likely it will.
+If not then you may need to do some more debugging.
 Run avsmeter.exe. in command window. It is in the scripts directory. 
 avsmeter remove_dups.avs  
 avsmeter provides the report and may give you additional info why the script is not loading properly.  
